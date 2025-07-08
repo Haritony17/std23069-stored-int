@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class StoredIntEndpoint {
 
   private final Random random = new Random();
+  private static final String FILE_PATH = "/tmp/stored-int.txt";
 
   @GetMapping("/stored-int")
   public String getStoredInt() {
     try {
-      File file = new File("stored-int.txt");
+      File file = new File(FILE_PATH);
 
       if (file.exists()) {
         String content = Files.readString(file.toPath());
